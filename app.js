@@ -1,17 +1,17 @@
 //jshint esversion:6
 
-const express = require('express')
-const bodyParser = require('body-parser')
-const request = require('request')
-const https = require('https');
-const { response } = require('express');
+import express, { static } from 'express';
+import { urlencoded } from 'body-parser';
+import request from 'request';
+import { request as _request } from 'https';
+import { response } from 'express';
 
 
 
 const app = express();
 
-app.use(express.static("public"));
-app.use(bodyParser.urlencoded({extended:true}))
+app.use(static("public"));
+app.use(urlencoded({extended:true}))
 app.set('view engine', 'ejs');
 
 app.get('/',function(req,res){
@@ -63,7 +63,7 @@ app.post('/',function(req, res){
         auth:"helentsai:816457cd722a71e1eef2aa62a5267d2b-us10"
     }
 
-    const request = https.request(url,option,function(response){
+    const request = _request(url,option,function(response){
         if(response.statusCode ===200){
             res.sendFile(__dirname+ "/success.html")
         }else{

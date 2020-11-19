@@ -89,7 +89,7 @@ app.post("/success", function(req,res){
     res.redirect("/")
 })
 
-app.listen(8080 ,function(){
-    console.log("server is running on port 8080");
+app.listen(3400 ,function(){
+    console.log("server is running on port 3400");
     
 })
